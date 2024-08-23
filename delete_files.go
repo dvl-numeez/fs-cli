@@ -7,37 +7,50 @@ import (
 	"os"
 	"strings"
 )
-func Delete(input string){
-	fmt.Println("Are you sure you want to delete the directory/file")
-	fmt.Println("Press Y/N")
-	reader:=bufio.NewScanner(os.Stdin)
-	reader.Scan()
-	choice:=reader.Text()
-	switch strings.ToLower(choice){
-	case "y":
-		DeleteDirectory(input)
-	case "n":
-		fmt.Println("Delete operation cancelled")
-	default:
+func Delete(input string,mode string){
+	switch mode {
+	case "delete":
+		fmt.Println("Are you sure you want to delete the directory/file")
+		fmt.Println("Press Y/N")
+		reader:=bufio.NewScanner(os.Stdin)
+		reader.Scan()
+		choice:=reader.Text()
+		switch strings.ToLower(choice){
+		case "y":
+			DeleteDirectory(input,mode)
+		case "n":
+			fmt.Println("Delete operation cancelled")
+		default:
 		fmt.Println("Invalid input please enter Y or N according to your needs")
-
 		
 	}
+	case "move":
+			DeleteDirectory(input,mode)
 
 }
-func DeleteDirectory(input string){
-	inputs:=strings.Split(input, " ")
-	length:=len(inputs)
-	if length==2{
+	
+
+
+}
+func DeleteDirectory(input string,mode string){
+	switch mode{
+	case "delete":
+		inputs:=strings.Split(input, " ")
+		length:=len(inputs)
+		if length==2{
 
 		deleteAllContentsOfDirectory(inputs[1])
 		err:=os.Remove(inputs[1])
 		if err!=nil{
 			fmt.Println("Error occured : ",err)
+		}
 		}else{
 			fmt.Println("Invalid number of arguments")
 		}
+	case "move":
+		DeleteForMove(input)
 	}
+	
 
 	
 }
@@ -83,4 +96,11 @@ func IsDirectory(directory string)(bool,error){
 		return true,nil
 	}
 	return false,nil
+}
+func DeleteForMove(dir string){
+	deleteAllContentsOfDirectory(dir)
+		err:=os.Remove(dir)
+		if err!=nil{
+			fmt.Println("Error occured : ",err)
+		}
 }

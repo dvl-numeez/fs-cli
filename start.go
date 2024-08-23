@@ -6,6 +6,10 @@ import (
 	"os"
 	"strings"
 )
+const(
+	delete = "delete"
+	move = "move"
+)
 
 func startRepl(){
 	reader:=bufio.NewScanner(os.Stdin)
@@ -19,9 +23,11 @@ func startRepl(){
 		case "list":
 			ListFiles(input)
 		case "delete":
-			Delete(input)
+			Delete(input,delete)
 		case "copy":
 			Copy(input)
+		case "move":
+			Move(input)
 		case "exit":
 			Exit()
 		case "clear":
