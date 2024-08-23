@@ -40,10 +40,6 @@ func DeleteDirectory(input string,mode string){
 		if length==2{
 
 		deleteAllContentsOfDirectory(inputs[1])
-		err:=os.Remove(inputs[1])
-		if err!=nil{
-			fmt.Println("Error occured : ",err)
-		}
 		}else{
 			fmt.Println("Invalid number of arguments")
 		}
@@ -69,38 +65,35 @@ func  IsDirectoryEmpty(directory string)(bool,error){
 }
 
 func deleteAllContentsOfDirectory(directory string){
+	result:=IsDirectory(directory)
+	
+	if result{
 	
 	files,err:=os.ReadDir(directory)
 	if err!=nil{
-		fmt.Println("Error occured : ",err)
+		fmt.Println("Error occured 3: ",err)
 	}
 	for _,file:=range files{
 		path:=directory+"/"+file.Name()
-		isDirectory,err:=IsDirectory(path)
-		if err!=nil{
-			fmt.Println("Error occured : ",err)
-		}
+		isDirectory:=IsDirectory(path)
 		if isDirectory{
 			deleteAllContentsOfDirectory(path)
 		}
 		os.Remove(path)
 	}
+	
+}
+os.Remove(directory)
 }
 
-func IsDirectory(directory string)(bool,error){
-	info,err:=os.Stat(directory)
-	if err!=nil{
-		return false,err
-	}
-	if info.IsDir(){
-		return true,nil
-	}
-	return false,nil
+func IsDirectory(directory string)bool{
+	info,_:=os.Stat(directory)
+	return info.IsDir()
 }
 func DeleteForMove(dir string){
 	deleteAllContentsOfDirectory(dir)
 		err:=os.Remove(dir)
 		if err!=nil{
-			fmt.Println("Error occured : ",err)
+			fmt.Println("Error occured  1 : ",err)
 		}
 }
