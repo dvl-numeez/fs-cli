@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 )
-func Delete(input string,mode string){
+func Delete(input string,mode string, writer io.Writer){
 	switch mode {
 	case "delete":
 		fmt.Println("Are you sure you want to delete the directory/file")
@@ -17,7 +17,7 @@ func Delete(input string,mode string){
 		choice:=reader.Text()
 		switch strings.ToLower(choice){
 		case "y":
-			DeleteDirectory(input,mode)
+			DeleteDirectory(input,mode,writer)
 		case "n":
 			fmt.Println("Delete operation cancelled")
 		default:
@@ -25,21 +25,21 @@ func Delete(input string,mode string){
 		
 	}
 	case "move":
-			DeleteDirectory(input,mode)
+			DeleteDirectory(input,mode,writer)
 
 }
 	
 
 
 }
-func DeleteDirectory(input string,mode string){
+func DeleteDirectory(input string,mode string,writer io.Writer){
 	switch mode{
 	case "delete":
 		inputs:=strings.Split(input, " ")
 		length:=len(inputs)
 		if length==2{
 
-		deleteAllContentsOfDirectory(inputs[1])
+		deleteAllContentsOfDirectory(inputs[1],writer)
 		}else{
 			fmt.Println("Invalid number of arguments")
 		}
@@ -64,7 +64,7 @@ func  IsDirectoryEmpty(directory string)(bool,error){
     return false, err 
 }
 
-func deleteAllContentsOfDirectory(directory string){
+func deleteAllContentsOfDirectory(directory string,writer io.Writer){
 	result:=IsDirectory(directory)
 	
 	if result{
@@ -77,7 +77,7 @@ func deleteAllContentsOfDirectory(directory string){
 		path:=directory+"/"+file.Name()
 		isDirectory:=IsDirectory(path)
 		if isDirectory{
-			deleteAllContentsOfDirectory(path)
+			deleteAllContentsOfDirectory(path,writer)
 		}
 		os.Remove(path)
 	}
@@ -91,7 +91,7 @@ func IsDirectory(directory string)bool{
 	return info.IsDir()
 }
 func DeleteForMove(dir string){
-	deleteAllContentsOfDirectory(dir)
+	deleteAllContentsOfDirectory(dir,os.Stdin)
 		err:=os.Remove(dir)
 		if err!=nil{
 			fmt.Println("Error occured  1 : ",err)

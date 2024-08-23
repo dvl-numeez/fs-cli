@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"io/fs"
 	"os"
 	"strings"
 )
 
 
-func ListFiles(input string){
+func ListFiles(input string ,writer io.Writer){
 	inputs:=strings.Split(input," ")
 	length:= len(inputs)
 	switch length{

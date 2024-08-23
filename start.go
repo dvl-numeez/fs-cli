@@ -21,13 +21,13 @@ func startRepl(){
 		command:=strings.ToLower(words[0])
 		switch command{
 		case "list":
-			ListFiles(input)
+			ListFiles(input,os.Stdin)
 		case "delete":
-			Delete(input,delete)
+			Delete(input,delete,os.Stdin)
 		case "copy":
-			Copy(input)
+			Copy(input,os.Stdin)
 		case "move":
-			Move(input)
+			Move(input,os.Stdin)
 		case "exit":
 			Exit()
 		case "clear":
