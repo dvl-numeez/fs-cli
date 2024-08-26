@@ -23,11 +23,11 @@ func startRepl(){
 		case "list":
 			ListFiles(input,os.Stdin)
 		case "delete":
-			Delete(input,delete,os.Stdin)
+			Delete(input,delete,os.Stdin,os.Stdout)
 		case "copy":
-			Copy(input,os.Stdin)
+			Copy(input,os.Stdout)
 		case "move":
-			Move(input,os.Stdin)
+			Move(input,os.Stdin,os.Stdout)
 		case "exit":
 			Exit()
 		case "clear":

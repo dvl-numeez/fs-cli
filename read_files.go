@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"io"
-	"io/fs"
 	"os"
 	"strings"
 )
@@ -14,45 +13,47 @@ func ListFiles(input string ,writer io.Writer){
 	length:= len(inputs)
 	switch length{
 	case 2:
-		ListAllFiles(inputs[1])
+		ListAllFiles(inputs[1],writer)
 	case 3:
-		ListAllFilesWithExtension(inputs[1],inputs[2])
+		ListAllFilesWithExtension(inputs[1],inputs[2],writer)
 	default:
-		fmt.Println("Invalid number of arguments")
+		fmt.Fprintln(writer,"Invalid number of arguments")
 	}
-
-
-
 }
 
 
-func ListAllFiles(directory string){
+func ListAllFiles(directory string, writer io.Writer){
 	files,err:=os.ReadDir(directory)
 	if err!=nil{
-		fmt.Println("Error occured : ",err)
+		fmt.Fprintln(writer, "Error occured : ",err)
+		
 	}
 	for _,file:= range files{
-		fmt.Println(file.Name())
+		fmt.Fprintln(writer,file.Name())
+		
 	}
 }
-func ListAllFilesWithExtension(directory,extension string){
+func ListAllFilesWithExtension(directory,extension string,writer io.Writer){
 	files,err:=os.ReadDir(directory)
 	if err!=nil{
-		fmt.Println("Error occured : ",err)
+		fmt.Fprintln(writer,"Error occured : ",err)
 	}
 	for _,file:= range files{
 		if strings.Contains(file.Name(),extension){
-			fmt.Println(file.Name())
+			fmt.Fprintln(writer,file.Name())
 		}
 	}
 }
-func ListAllFilesWithFilter(directory,extension string){
-	root:=os.DirFS(directory)
-	results,err:=fs.Glob(root,extension)
-	if err!=nil{
-		fmt.Println("Error occured : ",err)
-	}
-	for _,res:=range results{
-		fmt.Println(res)
-	}
-}
+
+//Spare function
+//This function can be used for searching with some modifications
+// func ListAllFilesWithFilter(directory,extension string,writer io.Writer){
+// 	root:=os.DirFS(directory)
+// 	results,err:=fs.Glob(root,extension)
+// 	if err!=nil{
+// 		fmt.Fprintln(writer,"Error occured : ",err)
+// 	}
+// 	for _,res:=range results{
+// 		fmt.Fprintln(writer,res)
+// 	}
+// }

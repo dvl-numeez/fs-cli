@@ -11,15 +11,33 @@ import (
 
 func Copy(input string, writer io.Writer){
 	inputs:=strings.Split(input, " ")
-	sourceDestination:=inputs[1]
-	copyDestination:=inputs[2]
-	CopyFiles(sourceDestination,copyDestination,writer)
+	switch len(inputs){
+	case 3 :
+		sourceDestination:=inputs[1]
+		copyDestination:=inputs[2]
+		_,sourceErr:=os.Open(sourceDestination)
+		if sourceErr!=nil{
+			fmt.Fprintln(writer,sourceErr)
+		}
+		_,copyErr:=os.Open(copyDestination)
+		if copyErr!=nil{
+			fmt.Fprintln(writer,copyErr)
+		}
+		if sourceErr==nil && copyErr==nil{
+			CopyFiles(sourceDestination,copyDestination,writer)
+		}
+		
+	default:
+		fmt.Fprintln(writer,"Invalid arguments")
+
+	}
 }
 
 func CopyFiles(sourceDestination,copyDestination string, writer io.Writer){
 	fileInfo,err:=os.Stat(sourceDestination)
 	if err!=nil{
 		fmt.Fprintln(writer,"Error occured : ",err)	
+		
 	}
 	nameOfFile:=fileInfo.Name()
 	if fileInfo.IsDir(){

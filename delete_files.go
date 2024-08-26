@@ -4,34 +4,31 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"strings"
 )
-func Delete(input string,mode string, writer io.Writer){
+func Delete(input string,mode string,reader io.Reader, writer io.Writer){
 	switch mode {
 	case "delete":
 		fmt.Println("Are you sure you want to delete the directory/file")
 		fmt.Println("Press Y/N")
-		reader:=bufio.NewScanner(os.Stdin)
+		reader:=bufio.NewScanner(reader)
 		reader.Scan()
 		choice:=reader.Text()
 		switch strings.ToLower(choice){
 		case "y":
 			DeleteDirectory(input,mode,writer)
 		case "n":
-			fmt.Println("Delete operation cancelled")
+			fmt.Fprint(writer,"Delete operation cancelled")
 		default:
-		fmt.Println("Invalid input please enter Y or N according to your needs")
+		fmt.Fprint(writer,"Invalid input please enter Y or N according to your needs")
 		
 	}
 	case "move":
 			DeleteDirectory(input,mode,writer)
-
-}
-	
-
-
-}
+		}
+	}
 func DeleteDirectory(input string,mode string,writer io.Writer){
 	switch mode{
 	case "delete":
@@ -41,14 +38,11 @@ func DeleteDirectory(input string,mode string,writer io.Writer){
 
 		deleteAllContentsOfDirectory(inputs[1],writer)
 		}else{
-			fmt.Println("Invalid number of arguments")
+			fmt.Fprintln(writer,"Invalid number of arguments")
 		}
 	case "move":
-		DeleteForMove(input)
+		DeleteForMove(input,writer)
 	}
-	
-
-	
 }
 
 func  IsDirectoryEmpty(directory string)(bool,error){
@@ -65,13 +59,11 @@ func  IsDirectoryEmpty(directory string)(bool,error){
 }
 
 func deleteAllContentsOfDirectory(directory string,writer io.Writer){
-	result:=IsDirectory(directory)
-	
+	result:=IsDirectory(directory)	
 	if result{
-	
 	files,err:=os.ReadDir(directory)
 	if err!=nil{
-		fmt.Println("Error occured 3: ",err)
+		fmt.Println("Error occured : ",err)
 	}
 	for _,file:=range files{
 		path:=directory+"/"+file.Name()
@@ -87,13 +79,12 @@ os.Remove(directory)
 }
 
 func IsDirectory(directory string)bool{
-	info,_:=os.Stat(directory)
+	info,err:=os.Stat(directory)
+	if err!=nil{
+		log.Fatal(err)
+	}
 	return info.IsDir()
 }
-func DeleteForMove(dir string){
-	deleteAllContentsOfDirectory(dir,os.Stdin)
-		err:=os.Remove(dir)
-		if err!=nil{
-			fmt.Println("Error occured  1 : ",err)
-		}
+func DeleteForMove(dir string,writer io.Writer){
+	deleteAllContentsOfDirectory(dir,os.Stdout)
 }

@@ -1,0 +1,78 @@
+
+Chris Lattner
+Chris Lattner at FOSDEM in 2011
+Chris Lattner at FOSDEM in 2011
+Born	Christopher Arthur Lattner
+1978 (age 45–46)
+Nationality	American
+Alma mater	
+University of Portland (BS)
+University of Illinois at Urbana-Champaign (MS, PhD)
+Known for	LLVM
+Clang
+Swift programming language
+Mojo programming language
+Spouse	Tanya Lattner
+Awards	
+ACM SIGPLAN Programming Languages Software Award (2010)
+ACM Software System Award (2012)
+Scientific career
+Fields	Compilers
+Programming languages
+Institutions	
+Modular AI
+SiFive
+Google
+Tesla, Inc.
+Apple Inc.
+Thesis	Macroscopic Data Structure Analysis and Optimization (2005)
+Doctoral advisor	Vikram Adve
+Website	nondot.org/sabre/ Edit this at Wikidata
+Christopher Arthur Lattner (born 1978) is an American computer scientist and creator of LLVM, the Clang compiler, the Swift programming language and the MLIR compiler infrastructure.[1]
+
+After his PhD in computer science, Lattner worked at Apple for 12 years, eventually leading the Developer Tools team. Between 2017 and 2022, Lattner worked in various positions for Tesla, Google[2] and SiFive.[3] He is currently co-founder and CEO of Modular AI, a company building an artificial intelligence developer platform.[4]
+
+Education
+Lattner studied computer science at the University of Portland, graduating with a Bachelor of Science degree in 2000. While in Oregon, he worked as an operating system developer, enhancing Sequent Computer Systems's DYNIX/ptx.[5][6]
+
+In late 2000, Lattner joined the University of Illinois at Urbana-Champaign as a research assistant and M.Sc. student. While working with Vikram Adve, he designed and began implementing LLVM, an innovative infrastructure for optimizing compilers, which was the subject of his 2002 Master of Science thesis.[7] In his PhD thesis, completed in 2005 also with Vikram Adve, Lattner used LLVM for research on optimizing pointer-intensive programs.[8][9]
+
+Career
+Apple
+At Apple, Lattner was primarily responsible for building a new compiler infrastructure based around LLVM and creating the Swift programming language for building apps on Apple platforms. Lattner served as the Senior Director and Architect, Developer Tools Department from January 2013 to January 2017 leading the Xcode, Instruments, and compiler teams.[10][5][11][12]
+
+LLVM, Clang and related projects
+In 2005, Apple Inc. hired Lattner to begin work bringing LLVM to production quality for use in Apple products. Over time, Lattner built out the technology, personally implementing many major new features in LLVM, formed and built a team of LLVM developers at Apple, started the Clang project, took responsibility for evolving Objective-C (contributing to the blocks language feature, and driving the ARC and Objective-C literals features), and nurtured the open source community (leading it through many open source releases). Apple first shipped LLVM-based technology in the 10.5 (and 10.4.8) OpenGL stack as a just-in-time (JIT) compiler, shipped the llvm-gcc compiler in the integrated development environment (IDE) Xcode 3.1, Clang 1.0 in Xcode 3.2, Clang 2.0 (with C++ support) in Xcode 4.0, and LLDB, libc++, assemblers, and disassembler technology in later releases.[13]
+
+Lattner's work involved designing, implementing, and evangelizing the LLVM and Clang compilers, productizing and driving the debugger LLDB, and overseeing development of the low-level toolchain. As of 2016, LLVM technologies are the core of Apple's developer tools and the default toolchain on FreeBSD.[14]
+
+In June 2010, the Association for Computing Machinery (ACM) Special Interest Group on programming languages (SIGPLAN) gave Lattner its inaugural ACM SIGPLAN Programming Languages Software Award "for his design and development of the Low Level Virtual Machine", noting that Professor Adve has stated: "Lattner's talent as a compiler architect, together with his programming skills, technical vision, and leadership ability were crucial to the success of LLVM."[15]
+
+In April 2013, the ACM awarded Lattner its Software System Award,[16] which is presented to anyone "recognized for developing a software system that has had a lasting influence, reflected in contributions to concepts, in commercial acceptance, or both".[10]
+
+Swift
+Lattner began developing the Swift programming language in 2010, with the eventual collaboration of many other programmers.[17]
+
+On 2 June 2014, the WWDC app became the first publicly released app that used Swift.[18]
+
+Swift is an open source[19][20] programming language with first-class functions for iOS and macOS development, created by Apple and introduced at Apple's developer conference Apple Worldwide Developers Conference (WWDC) 2014.[21]
+
+Swift is designed to coexist[22] with Objective-C, the object-oriented programming language formerly preferred by Apple, and to be more resilient against erroneous code. It is built with the LLVM compiler included in Xcode 6.[23]
+
+Lattner announced that the project lead role had been transferred to Ted Kremenek, and that Lattner would leave Apple in January 2017.[24]
+
+Tesla
+At Tesla, Lattner served as the Vice President at Autopilot Software from January 30 to June 20, 2017, where he worked on transitioning Autopilot hardware.[25][26]
+
+Google
+Lattner served as the Senior Director and Distinguished Engineer, TensorFlow Infrastructure and Technologies at Google from August 2017 to January 2020.[27]
+
+MLIR
+While working at Google, Lattner was the co-founder of MLIR compiler infrastructure,[1] a compiler that aims to address software fragmentation, improve compilation for heterogeneous hardware, significantly reduce the cost of building domain-specific compilers, and aid in connecting existing compilers together.[28][29]
+
+SiFive
+Lattner joined SiFive in January 2020 as the President of Platform Engineering,[30][31] leading the RISC-V Product and Engineering organizations (everything excluding HR, finance, sales, and customer support).[32][33]
+
+Modular
+In 2022, Chris Lattner, alongside his co-founders, established Modular AI, a company that is building an Artificial Intelligence (AI) developer platform. Their first products are the Mojo programming language and an inference engine.[4] Lattner is the current CEO of Modular AI.
+
