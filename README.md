@@ -22,7 +22,7 @@ This CLI tool helps manage files and directories using simple commands.
    delete dir
 ```
 
-**Delete a file::**
+**Delete a file:**
 
 ```bash
    delete filename
@@ -34,7 +34,7 @@ This CLI tool helps manage files and directories using simple commands.
    move source-dir destination-dir
 ```
 
-**Copy a file or directory to a new location**
+**Copy a file or directory to a new location:**
 
 ```bash
    copy source-dir destination-dir
