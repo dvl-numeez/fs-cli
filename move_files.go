@@ -10,10 +10,10 @@ import (
 
 func Move(input string , reader io.Reader,writer io.Writer){
 	inputs:=strings.Split(input, " ")
-	sourceDestination:=inputs[1]
-	copyDestination:=inputs[2]
 	switch len(inputs){
 	case 3 :
+		sourceDestination:=inputs[1]
+		copyDestination:=inputs[2]
 		CopyFiles(sourceDestination,copyDestination,writer)
 		Delete(sourceDestination,move,reader,writer)
 	default:

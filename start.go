@@ -16,7 +16,7 @@ func startRepl(){
 	for{
 		fmt.Print("> ")
 		reader.Scan()
-		input:=reader.Text()
+		input:=filterInput(reader.Text())
 		words:=strings.Split(input, " ")
 		command:=strings.ToLower(words[0])
 		switch command{

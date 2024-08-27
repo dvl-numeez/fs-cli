@@ -4,6 +4,7 @@ import (
 	"os"
 	"os/exec"
 	"runtime"
+	"strings"
 )
 
 
@@ -22,3 +23,16 @@ func ClearScreen() {
     }
 }
 
+
+func filterInput(input string)string{
+    results:=[]string{}
+    instruction:=strings.TrimSpace(input)
+    inputs:=strings.Split(instruction, " ")
+    for _,i:= range inputs{
+        if i!=""{
+       results = append(results, i)
+        }
+
+    }
+return  strings.Join(results, " ")
+}

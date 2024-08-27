@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"math/rand"
 	"os"
 
 	"testing"
@@ -23,6 +24,14 @@ func TestCopyFiles(t *testing.T) {
 		t.Error(err)
 	}
 	assertSameFile(t,copyFile,originalFile)
+	})
+	t.Run("Copying a folder",func(t *testing.T){
+		folderName:="copy_test_folder"
+		sourceDir:="/Users/numeezbaloch17/Documents/fs-cli/copy_test_folder"
+		copyDir:="/Users/numeezbaloch17/Documents/fs-cli/copy_test_dir"
+		output:=bytes.Buffer{}
+		CopyFiles(sourceDir,copyDir,&output)
+		assertSameDirectory(t,sourceDir,copyDir,folderName)
 	})
 
 	t.Run("Passing invalid arguments",func(t *testing.T){
@@ -69,4 +78,29 @@ func assertSameFile(t testing.TB,copyFile,originalFile []byte){
 	}
 }
 
+//We will take a random file from directory and try to match it with the original one
+//This way we can assure that the file is copied properly
+//Hence we can assume that the rest of the content of the directory are also copied properly by testing in this way
+func assertSameDirectory(t testing.TB,sourceDir,copyDir,folderName string){
+	t.Helper()
+	files,err:=os.ReadDir(copyDir+"/"+folderName)
+	if err!=nil{
+		t.Error("Directory not copied")
+	}
+	randomNumber:=rand.Intn(len(files))
+	randomFileName:=files[randomNumber]
+	copyPath:=copyDir+"/"+folderName+"/"+randomFileName.Name()
+	originalPath:=sourceDir+"/"+randomFileName.Name()
+	copyFile,err:=os.ReadFile(copyPath)
+	if err!=nil{
+		t.Error(err)
+	}
+	originalFile,err:=os.ReadFile(originalPath)
+	if err!=nil{
+		t.Error(err)
+	}
+	assertSameFile(t,copyFile,originalFile)
 
+
+
+}

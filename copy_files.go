@@ -15,17 +15,7 @@ func Copy(input string, writer io.Writer){
 	case 3 :
 		sourceDestination:=inputs[1]
 		copyDestination:=inputs[2]
-		_,sourceErr:=os.Open(sourceDestination)
-		if sourceErr!=nil{
-			fmt.Fprintln(writer,sourceErr)
-		}
-		_,copyErr:=os.Open(copyDestination)
-		if copyErr!=nil{
-			fmt.Fprintln(writer,copyErr)
-		}
-		if sourceErr==nil && copyErr==nil{
-			CopyFiles(sourceDestination,copyDestination,writer)
-		}
+		CopyFiles(sourceDestination,copyDestination,writer)
 		
 	default:
 		fmt.Fprintln(writer,"Invalid arguments")
@@ -34,6 +24,16 @@ func Copy(input string, writer io.Writer){
 }
 
 func CopyFiles(sourceDestination,copyDestination string, writer io.Writer){
+	_,sourceErr:=os.Open(sourceDestination)
+		if sourceErr!=nil{
+			fmt.Fprintln(writer,sourceErr)
+		}
+		_,copyErr:=os.Open(copyDestination)
+		if copyErr!=nil{
+			fmt.Fprintln(writer,copyErr)
+		}
+	if sourceErr==nil && copyErr==nil{
+		
 	fileInfo,err:=os.Stat(sourceDestination)
 	if err!=nil{
 		fmt.Fprintln(writer,"Error occured : ",err)	
@@ -68,4 +68,5 @@ func CopyFiles(sourceDestination,copyDestination string, writer io.Writer){
 	}
 }
 
+}
 }
