@@ -65,11 +65,11 @@ github.com/dvl-numeez/fs-cli/read_files.go:15.9,16.33 1 1
 github.com/dvl-numeez/fs-cli/read_files.go:17.9,18.56 1 1
 github.com/dvl-numeez/fs-cli/read_files.go:19.10,20.53 1 1
 github.com/dvl-numeez/fs-cli/read_files.go:25.54,27.13 2 1
-github.com/dvl-numeez/fs-cli/read_files.go:27.13,30.3 1 0
+github.com/dvl-numeez/fs-cli/read_files.go:27.13,30.3 1 1
 github.com/dvl-numeez/fs-cli/read_files.go:31.2,31.26 1 1
 github.com/dvl-numeez/fs-cli/read_files.go:31.26,34.3 1 1
 github.com/dvl-numeez/fs-cli/read_files.go:36.76,38.13 2 1
-github.com/dvl-numeez/fs-cli/read_files.go:38.13,40.3 1 0
+github.com/dvl-numeez/fs-cli/read_files.go:38.13,40.3 1 1
 github.com/dvl-numeez/fs-cli/read_files.go:41.2,41.26 1 1
 github.com/dvl-numeez/fs-cli/read_files.go:41.26,42.45 1 1
 github.com/dvl-numeez/fs-cli/read_files.go:42.45,44.4 1 1

@@ -66,17 +66,29 @@ for _,c:=range cases{
 
 })
 // This is working but it seems formatting issues which make test fails
-// t.Run("Passing a broken directory",func(t *testing.T){
-// 	directory:="/Users/numeezbaloch17/Documents/fs-cli/wrong_dir"
-// 	output:=bytes.Buffer{}
+t.Run("Passing a broken directory",func(t *testing.T){
+	directory:="/Users/numeezbaloch17/Documents/fs-cli/wrong_dir"
+	output:=bytes.Buffer{}
 	
-// 	expected:=`Error occured :  open /Users/numeezbaloch17/Documents/fs-cli/wrong_dir: no such file or directory`
-// 	ListAllFiles(directory,&output)
-// 	fmt.Println(output.String())
-// 	if output.String()!=expected{
-// 		t.Errorf("Actual : %s Wanted : %s",output.String(),expected)
-// 	}
-// })
+	expected:=`Error occured :  open /Users/numeezbaloch17/Documents/fs-cli/wrong_dir: no such file or directory
+`
+	ListAllFiles(directory,&output)
+	if output.String()!=expected{
+		t.Errorf("Actual : %s Wanted : %s",output.String(),expected)
+	}
+})
+
+t.Run("Passing a broken directory to ListAllFilesWithExtension",func(t *testing.T){
+	directory:="/Users/numeezbaloch17/Documents/fs-cli/wrong_dir"
+	output:=bytes.Buffer{}
+	
+	expected:=`Error occured :  open /Users/numeezbaloch17/Documents/fs-cli/wrong_dir: no such file or directory
+`
+	ListAllFilesWithExtension(directory,".md",&output)
+	if output.String()!=expected{
+		t.Errorf("Actual : %s Wanted : %s",output.String(),expected)
+	}
+})
 }
 
 
